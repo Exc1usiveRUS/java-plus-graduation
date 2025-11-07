@@ -60,6 +60,7 @@ public class EventPublicController {
         log.info("Getting public event with id {} - Started", eventId);
         EventFullDto event = eventService.publicGetEvent(eventId);
         log.info("Getting public event with id {} - Finished", eventId);
+        restStatClient.collectUserAction(userId, eventId, UserActionType.VIEW);
         return event;
     }
 
@@ -81,7 +82,7 @@ public class EventPublicController {
     }
 
     @DeleteMapping("/{eventId}/like")
-    @ResponseStatus(HttpStatus.GONE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Long removeLike(@PathVariable(name = "eventId") Integer eventId,
                            @RequestHeader("X-EWM-USER-ID") Integer userId) {
         log.info("Removing like from event with id {} from user with id {} - Started", eventId, userId);
