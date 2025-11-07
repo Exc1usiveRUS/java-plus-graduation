@@ -15,7 +15,6 @@ import ru.practicum.event.dto.EventRequestParam;
 import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.service.RecommendationService;
 import ru.practicum.ewm.client.RestStatClient;
-import ru.practicum.ewm.client.UserActionType;
 import ru.practicum.utility.Constants;
 
 import java.time.LocalDateTime;
@@ -60,7 +59,6 @@ public class EventPublicController {
         log.info("Getting public event with id {} - Started", eventId);
         EventFullDto event = eventService.publicGetEvent(eventId);
         log.info("Getting public event with id {} - Finished", eventId);
-        restStatClient.collectUserAction(userId, eventId, UserActionType.VIEW);
         return event;
     }
 
