@@ -130,18 +130,24 @@
 					<version>${avro.maven.plugin.version}</version>
 					<executions>
 						<execution>
-							<id>schemas</id>
 							<phase>generate-sources</phase>
 							<goals>
-								<goal>idl-protocol</goal>
+								<goal>schema</goal>
+								<goal>protocol</goal>
 							</goals>
+							<configuration>
+								<sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+								<outputDirectory>${project.build.directory}/generated-sources/avro</outputDirectory>
+								<stringType>String</stringType>
+								<createSetters>false</createSetters>
+								<enableDecimalLogicalType>true</enableDecimalLogicalType>
+								<createOptionalGetters>false</createOptionalGetters>
+								<gettersReturnOptional>false</gettersReturnOptional>
+								<optionalGettersForNullableFieldsOnly>false</optionalGettersForNullableFieldsOnly>
+								<fieldVisibility>PUBLIC_DEPRECATED</fieldVisibility>
+							</configuration>
 						</execution>
 					</executions>
-					<configuration>
-						<sourceDirectory>${project.basedir}/src/main/avro</sourceDirectory>
-						<outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
-						<stringType>String</stringType>
-					</configuration>
 				</plugin>
 
 				<plugin>

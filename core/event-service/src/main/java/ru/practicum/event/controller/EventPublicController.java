@@ -60,7 +60,7 @@ public class EventPublicController {
         log.info("Getting public event with id {} - Started", eventId);
         EventFullDto event = eventService.publicGetEvent(eventId);
         log.info("Getting public event with id {} - Finished", eventId);
-        restStatClient.collectUserAction(userId, eventId, UserActionType.VIEW);
+        //restStatClient.collectUserAction(userId, eventId, UserActionType.VIEW);
         return event;
     }
 
