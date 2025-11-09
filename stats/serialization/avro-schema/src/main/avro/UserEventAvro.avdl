@@ -1,5 +1,4 @@
 @namespace("ru.practicum.ewm.stats.avro")
-@avro.java.package("ru.practicum.ewm.stats.avro")
 
 protocol UserActionProtocol {
 	enum ActionTypeAvro {
